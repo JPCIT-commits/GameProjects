@@ -1,0 +1,72 @@
+﻿@page
+@model GameProjects.Pages.Games.EditModel
+
+@{
+    ViewData["Title"] = "Edit Project";
+}
+
+<h1>Edit Project</h1>
+
+
+<h4>Game</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Game.Id" />
+            <div class="form-group">
+                <span class="text-danger">*</span>
+                <label asp-for="Game.Title" class="control-label"></label>
+                <input asp-for="Game.Title" class="form-control" />
+                <span asp-validation-for="Game.Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label for="type">Progress</label>
+                <select class="form-control" asp-for="Game.Progress">
+                    <option value="">Select Type</option>
+                    @foreach (var type in Model.StageList)
+                    {
+                        <option value="@type">@type</option>
+                    }
+                </select>
+                <span asp-validation-for="Game.Progress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                
+                <label asp-for="Game.Genre" class="control-label"></label>
+                <input asp-for="Game.Genre" class="form-control" />
+                <span asp-validation-for="Game.Genre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                
+                <label asp-for="Game.Platform" class="control-label"></label>
+                <input asp-for="Game.Platform" class="form-control" />
+                <span asp-validation-for="Game.Platform" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                
+                <label asp-for="Game.Engine" class="control-label"></label>
+                <input asp-for="Game.Engine" class="form-control" />
+                <span asp-validation-for="Game.Engine" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                
+                <label asp-for="Game.Version" class="control-label"></label>
+                <input asp-for="Game.Version" class="form-control" />
+                <span asp-validation-for="Game.Version" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
